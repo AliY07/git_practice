@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block title %}fist_page{% endblock %}
+
+{% block content %}
+
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Online Store</h1>
+    <p>Mission, Vission & Values</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li class="active"><a href="/accounts/first_page">Home</a></li>
+        <li><a href="/accounts/products/">Products</a></li>
+        <li><a href="/accounts/deals/">Deals</a></li>
+        <li><a href="/accounts/stores/">Stores</a></li>
+        <li><a href="/accounts/contact/">Contact</a></li>
+      </ul>
+      {% if user.is_authenticated %}
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+        <li><a href="{% url 'logout' %}"> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+        <p><a href="https://www.apple.com/iphone/">
+        <div class="panel-body"><img src="https://www.apple.com/v/iphone-14/d/images/meta/iphone-14_overview__ewkgx3s30v8m_og.png" alt="apple.com"class="img-responsive" style="width:100%"></div>
+        </a></p>
+        <div class="panel-footer">Buy new IPhone 14 pro max </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-danger">
+        <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+         <p><a href="https://www.apple.com/watch/">
+        <div class="panel-body"><img src="https://www.apple.com/v/watch/bb/images/meta/gps-lte/og__n5qzveqr596m.png" class="img-responsive" style="width:100%" alt="apple.com"></div>
+           </a></p>
+        <div class="panel-footer">Buy new Apple watches </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+       <p><a href="https://www.apple.com/airpods/">
+        <div class="panel-body"><img src="https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/airpods-max-select-skyblue-202011_FMT_WHH?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1604686090000" class="img-responsive" style="width:100%" alt="apple.com"></div>
+           </a></p>
+        <div class="panel-footer">Buy new Apple Airpods MAX </div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+         <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+       <p><a href="https://www.apple.com/ipad/">
+        <div class="panel-body"><img src="https://www.apple.com/newsroom/images/product/ipad/standard/apple_new-ipad-air_new-design_09152020.jpg.og.jpg?202302092216" class="img-responsive" style="width:100%" alt="apple.com"></div>
+           </a></p>
+        <div class="panel-footer">Buy new Ipad with M1 </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+       <p><a href="https://www.apple.com/mac/">
+        <div class="panel-body"><img src="https://www.apple.com/v/macbook-pro-14-and-16/b/images/meta/macbook-pro-14-and-16_overview__fz0lron5xyuu_og.png?202302070556" class="img-responsive" style="width:100%" alt="apple.com"></div>
+           </a></p>
+        <div class="panel-footer">Buy new Macbook 14 with M1 </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+       <div class="panel-heading">BEST OFFER FROM APPLE.COM</div>
+       <p><a href="https://www.apple.com/displays/">
+        <div class="panel-body"><img src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/studio-display-og-202203?wid=1200&hei=630&fmt=jpeg&qlt=95&.v=1645125507093" class="img-responsive" style="width:100%" alt="apple.com"></div>
+           </a></p>
+        <div class="panel-footer">Buy new Apple Display XDR </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<footer class="container-fluid text-center">
+  <p>Online Store Copyright</p>
+  </form>
+</footer>
+
+</body>
+
+{% endif %}
+
+{% endblock %}
+
+
+<!--END-->

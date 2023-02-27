@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+
+{% block title %}fist_page{% endblock %}
+
+{% block content %}
+
+
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+
+    /* Remove the jumbotron's default bottom margin */
+     .jumbotron {
+      margin-bottom: 0;
+    }
+
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+    .arrival-heading strong{
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    color: #1b1919;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 40px;
+    padding: 5px 30px;
+    border: 1px solid #e0e0e0;
+}
+.arrival-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.arrival-heading strong{
+    color: #ffffff;
+    background-color: #202020;
+    font-weight: 500;
+}
+.arrival-heading p{
+    color: #808080;
+    margin: 10px;
+    font-size: 0.9rem;
+}
+.product-container{
+    width:90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+.product-box{
+    display: flex;
+    flex-grow: 0.5;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #f7f7f7;
+    border-radius: 10px;
+    margin: 20px;
+}
+.product-img{
+    width:200px;
+    height: 210px;
+    margin: 20px;
+    cursor: pointer;
+    position: relative;
+}
+.product-img img{
+    width:100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+.product-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 10px 20px;
+    border-top: 1px solid #f3f3f3;
+}
+.p-name{
+    color: #727272;
+}
+.p-price{
+    color: #333333;
+    font-size: 1.2rem;
+    font-weight: 400;
+}
+.product-box:hover{
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+}
+.add-cart{
+    position: absolute;
+    right: -20px;
+    top: 10px;
+    width:50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    background-color: #0b9d8a;
+    box-shadow: 2px 2px 30px rgba(0,0,0,0.1);
+    display: none;
+    animation: fade 0.3s;
+
+}
+.add-cart:hover{
+    background-color: #f76b6a;
+    transition: all ease 0.2s;
+}
+.product-box:hover .add-cart{
+    display: flex;
+}
+.new-arrival{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+  </style>
+</head>
+
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center">
+    <h1>Online Store</h1>
+    <p>Mission, Vission & Values</p>
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li class="active"><a href="/accounts/first_page/">Home</a></li>
+        <li><a href="/accounts/products/">Products</a></li>
+        <li><a href="/accounts/deals/">Deals</a></li>
+        <li><a href="/accounts/stores/">Stores</a></li>
+        <li><a href="/accounts/contact/">Contact</a></li>
+      </ul>
+      {% if user.is_authenticated %}
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+        <li><a href="{% url 'logout' %}"> Log out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+ <section class="new-arrival">
+
+            <!--heading-------->
+            <div class="arrival-heading">
+                <strong>Online Buyer</strong>
+                <p>We Provide You New Fasion Design Clothes</p>
+            </div>
+              <!--products----------------------->
+              <div class="product-container">
+
+                <!--product-box-1---------->
+                  <div class="product-box">
+                      <!--product-img------------>
+                      <div class="product-img">
+                          <!--add-cart---->
+                          <a href="#" class="add-cart">
+                              <i class="fas fa-shopping-cart"></i>
+                            </a>
+                          <!--img------>
+                        <img src="https://shoptommy.scene7.com/is/image/ShopTommy/MW30080_0A4_FNT?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                      </div>
+                      <!--product-details-------->
+                      <div class="product-details">
+                          <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/regular-fit-stripe-oxford-shirt-mw30080" class="p-name">Oxford Shirt</a>
+                          <span class="p-price">$99.00</span>
+                      </div>
+                  </div>
+                    <!--product-box-2---------->
+                    <div class="product-box">
+                        <!--product-img------------>
+                        <div class="product-img">
+                            <!--add-cart---->
+                          <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                          <!--img------>
+                          <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78J1764_001_BCK?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                        </div>
+                        <!--product-details-------->
+                        <div class="product-details">
+                            <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/slim-fit-essential-comfort-stretch-chino-78j1764" class="p-name">Stretch Chino</a>
+                            <span class="p-price">$69.00</span>
+                        </div>
+                    </div>
+                  <!--product-box-3---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/7857349_004_BCK?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/essential-v-neck-sweater-7857349" class="p-name">V-neck sweater</a>
+                        <span class="p-price">$50.00</span>
+                    </div>
+                </div>
+                  <!--product-box-4---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/AM10923_DW6_BCK?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/signature-mini-reporter-bag-am10923" class="p-name">Reporter Bag</a>
+                        <span class="p-price">$89.00</span>
+                    </div>
+                </div>
+                  <!--product-box-5---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/78J8173_C87_FNT?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/tommy-logo-t-shirt-78j8173" class="p-name">Logo T-Shirt</a>
+                        <span class="p-price">$39.00</span>
+                    </div>
+                </div>
+                  <!--product-box-6---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/FM04450_BDS_FNT?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/leather-espadrille-fm04450" class="p-name">Leather Espadrille</a>
+                        <span class="p-price">$139.00</span>
+                    </div>
+                </div>
+                  <!--product-box-7---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart"><i class="fas fa-shopping-cart"></i></a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/AM10948_RBL_BCK?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/prep-stripe-tote-am10948" class="p-name">Stripe Tote</a>
+                        <span class="p-price">$159.00</span>
+                    </div>
+                </div>
+                  <!--product-box-8---------->
+                  <div class="product-box">
+                    <!--product-img------------>
+                    <div class="product-img">
+                        <!--add-cart---->
+                        <a href="#" class="add-cart">
+                            <i class="fas fa-shopping-cart"></i>
+                        </a>
+                        <!--img------>
+                      <img src="https://shoptommy.scene7.com/is/image/ShopTommy/7895041_083_FNT?wid=368&hei=491&fmt=jpeg&qlt=90%2c0&resMode=trilin&op_usm=0.8%2c1.0%2c6%2c0&iccEmbed=0&op_sharpen=1">
+                    </div>
+                    <!--product-details-------->
+                    <div class="product-details">
+                        <a href="https://usa.tommy.com/en/men/all-men-clothing-and-accessories/flag-cap-7895041" class="p-name">Flag Cape</a>
+                        <span class="p-price">$29.00</span>
+                    </div>
+                </div>
+              </div>
+          </section>
+</footer>
+
+</body>
+
+{% endif %}
+
+{% endblock %}
+
+
+<!--END-->
